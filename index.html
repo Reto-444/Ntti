@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="ru" data-theme="light" data-fs="md" data-ls="normal" data-motion="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>НТТИ — концепт редизайна сайта техникума</title>
+<meta name="description" content="Концепт редизайна сайта Новочеркасского техникума-интерната: среднее профессиональное образование для инвалидов и лиц с ОВЗ.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='15' fill='%230d8a6a'/%3E%3Crect x='11' y='10' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Crect x='30' y='10' width='7' height='28' rx='3.5' fill='%23fff'/%3E%3Cpath d='M18 30L30 18v8L18 38z' fill='%23ffc857'/%3E%3Ccircle cx='24' cy='13' r='3.4' fill='%23ffc857'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+/* применяем сохранённые настройки доступности до первой отрисовки */
+(function () {
+  try {
+    var raw = localStorage.getItem('ntti-a11y');
+    var s = raw ? JSON.parse(raw) : {};
+    var r = document.documentElement;
+    if (!raw && window.matchMedia('(prefers-color-scheme: dark)').matches) s.theme = 'dark';
+    if (!raw && window.matchMedia('(prefers-reduced-motion: reduce)').matches) s.motion = 'off';
+    ['theme', 'fs', 'ls', 'motion'].forEach(function (k) { if (s[k]) r.dataset[k] = s[k]; });
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo-mark" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="15" style="fill:var(--brand)"/>
+    <rect x="11" y="10" width="7" height="28" rx="3.5" style="fill:var(--on-brand)"/>
+    <rect x="30" y="10" width="7" height="28" rx="3.5" style="fill:var(--on-brand)"/>
+    <path d="M18 30L30 18v8L18 38z" style="fill:var(--logo-accent)"/>
+    <circle cx="24" cy="13" r="3.4" style="fill:var(--logo-accent)"/>
+  </symbol>
+</svg>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="container topbar__in">
+    <span class="topbar__tag">Среднее профессиональное образование для инвалидов и лиц с ОВЗ</span>
+    <div class="topbar__r">
+      <a class="topbar__phone" href="tel:+78635222140">8 (8635) 22-21-40</a>
+      <button type="button" class="topbar__btn" id="a11yBtn" aria-expanded="false" aria-controls="a11yPanel">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M1.5 12S5.5 5 12 5s10.5 7 10.5 7-4 7-10.5 7S1.5 12 1.5 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        Для слабовидящих
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ACCESSIBILITY PANEL ============ -->
+<section class="a11y" id="a11yPanel" aria-label="Настройки доступности" hidden>
+  <div class="container a11y__in">
+    <div class="a11y__g">
+      <span class="a11y__l">Размер текста</span>
+      <div class="seg" role="group" aria-label="Размер текста" data-key="fs">
+        <button type="button" data-v="md">A</button>
+        <button type="button" data-v="lg">A+</button>
+        <button type="button" data-v="xl">A++</button>
+      </div>
+    </div>
+    <div class="a11y__g">
+      <span class="a11y__l">Цветовая схема</span>
+      <div class="seg" role="group" aria-label="Цветовая схема" data-key="theme">
+        <button type="button" data-v="light">Светлая</button>
+        <button type="button" data-v="dark">Тёмная</button>
+        <button type="button" data-v="contrast">Контрастная</button>
+      </div>
+    </div>
+    <div class="a11y__g">
+      <span class="a11y__l">Интервалы</span>
+      <div class="seg" role="group" aria-label="Интервалы текста" data-key="ls">
+        <button type="button" data-v="normal">Обычные</button>
+        <button type="button" data-v="wide">Увеличенные</button>
+      </div>
+    </div>
+    <div class="a11y__g">
+      <span class="a11y__l">Анимации</span>
+      <div class="seg" role="group" aria-label="Анимации" data-key="motion">
+        <button type="button" data-v="on">Включены</button>
+        <button type="button" data-v="off">Выключены</button>
+      </div>
+    </div>
+    <div class="a11y__g a11y__g--end">
+      <button type="button" class="link-btn" id="a11yReset">Сбросить</button>
+      <a class="link-btn" href="https://www.ntti.ru/reverse.php?sp=1">Версия для слабовидящих на ntti.ru ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="top">
+  <div class="container hdr__in">
+    <a class="logo" href="#hero" aria-label="НТТИ — на главную">
+      <span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 48 48" width="46" height="46"><use href="#logo-mark"/></svg></span>
+      <span class="logo__t"><b>НТТИ</b><small>Новочеркасский техникум-интернат</small></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="#programs" data-spy>Специальности</a></li>
+        <li class="has-sub">
+          <button type="button" class="nav__b" aria-expanded="false">Абитуриенту
+            <svg class="chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="sub">
+            <li><a href="#admission">Как поступить</a></li>
+            <li><a href="#quiz">Подбор специальности</a></li>
+            <li><a href="https://www.ntti.ru/abiturientu/priem_2026">Приёмная кампания 2026</a></li>
+            <li><a href="https://www.ntti.ru/abiturientu/opendays">Дни открытых дверей</a></li>
+            <li><a href="https://www.ntti.ru/abiturientu/itog2025">Итоги приёма 2025</a></li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <button type="button" class="nav__b" aria-expanded="false">Студенту
+            <svg class="chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="sub">
+            <li><a href="https://www.ntti.ru/studentu/raspisanie">Расписание и звонки</a></li>
+            <li><a href="https://www.ntti.ru/studentu/dist_tech">Дистанционные технологии</a></li>
+            <li><a href="https://www.ntti.ru/studentu/abilimpiks">Абилимпикс</a></li>
+            <li><a href="https://www.ntti.ru/studentu/samoupravlenie">Самоуправление</a></li>
+            <li><a href="https://www.ntti.ru/studentu/ccvt">Содействие трудоустройству</a></li>
+          </ul>
+        </li>
+        <li><a href="#life" data-spy>Жизнь НТТИ</a></li>
+        <li><a href="#news" data-spy>Новости</a></li>
+        <li class="has-sub">
+          <button type="button" class="nav__b" aria-expanded="false">О нас
+            <svg class="chev" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="sub">
+            <li><a href="https://www.ntti.ru/raznoe/istoria-ntti">История НТТИ</a></li>
+            <li><a href="https://www.ntti.ru/raznoe/pobedyi-i-dostizheniya">Победы и достижения</a></li>
+            <li><a href="https://www.ntti.ru/raznoe/vyipuskniki">Выпускники</a></li>
+            <li><a href="https://www.ntti.ru/raznoe/smi">СМИ о нас</a></li>
+            <li><a href="https://www.ntti.ru/sveden">Сведения об организации</a></li>
+          </ul>
+        </li>
+        <li><a href="#contacts" data-spy>Контакты</a></li>
+      </ul>
+    </nav>
+
+    <div class="hdr__act">
+      <button type="button" class="icon-btn" id="searchBtn" aria-label="Поиск по сайту (Ctrl+K)" title="Поиск (Ctrl+K)">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="themeBtn" aria-label="Переключить тёмную тему" title="Тема">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8.5 8.5 0 1020 14.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+      <a class="btn btn-primary hdr__cta" href="#admission">Поступить</a>
+      <button type="button" class="icon-btn burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__bg" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="gridlines"></i></div>
+  <div class="container hero__in">
+    <div class="hero__txt">
+      <p class="eyebrow reveal">ФКПОУ «НТТИ» Минтруда России · Новочеркасск</p>
+      <h1 class="reveal">Территория <em>профессионализма,</em> гуманизма и творчества</h1>
+      <p class="lead reveal">Федеральный техникум-интернат, где студенты с инвалидностью и ОВЗ получают диплом государственного образца, практику на предприятиях-партнёрах и помощь в трудоустройстве.</p>
+      <div class="hero__btns reveal">
+        <a class="btn btn-primary btn-lg" href="#programs">Выбрать специальность</a>
+        <a class="btn btn-ghost btn-lg" href="#quiz">Пройти подбор за 1 минуту</a>
+      </div>
+    </div>
+
+    <aside class="hero__card reveal" aria-label="Приёмная кампания">
+      <p class="hero__cl"><span class="dot" aria-hidden="true"></span> Приёмная кампания 2026</p>
+      <ul class="hero__list">
+        <li><button type="button" data-open="prog"><b>09.02.07</b><span>Информационные системы и программирование · Программист</span></button></li>
+        <li><button type="button" data-open="web"><b>09.02.07</b><span>Информационные системы и программирование · Разработчик веб</span></button></li>
+        <li><button type="button" data-open="shvey"><b>29.02.04</b><span>Конструирование, моделирование и технология швейных изделий</span></button></li>
+        <li><button type="button" data-open="kozha"><b>29.02.01</b><span>Конструирование, моделирование и технология изделий из кожи</span></button></li>
+      </ul>
+      <a class="hero__order" href="https://www.ntti.ru/download/Abiturient/Prikaz261_18_08_2026.pdf">
+        Приказ о зачислении №261 от 18.08.2026 <span aria-hidden="true">↗</span>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats" aria-label="НТТИ в цифрах">
+  <div class="container stats__in">
+    <div class="stat reveal"><b class="count" data-to="4">4</b><span>специальности среднего профессионального образования</span></div>
+    <div class="stat reveal"><b class="count" data-to="2">2</b><span>отделения: профессиональное образование и реабилитация</span></div>
+    <div class="stat reveal"><b class="count" data-to="625" data-plus="1">625+</b><span>материалов в новостной ленте техникума</span></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec" id="about">
+  <div class="container about">
+    <div class="about__l">
+      <p class="eyebrow reveal">О техникуме</p>
+      <h2 class="reveal">Мы поможем вам найти свой путь в жизни</h2>
+      <p class="muted reveal">Профессиональное образование помогает реализовать свои возможности, занять достойное место в обществе и стать экономически независимым. Для каждого студента — индивидуальная программа реабилитации и специальные условия обучения.</p>
+      <ol class="feat">
+        <li class="reveal"><span class="feat__n">01</span><div><h3>Практика с первых курсов</h3><p>Учебная практика в мастерских техникума, производственная — на предприятиях-партнёрах.</p></div></li>
+        <li class="reveal"><span class="feat__n">02</span><div><h3>Личный подход</h3><p>Педагоги и медицинский персонал работают по индивидуальным и адаптированным программам.</p></div></li>
+        <li class="reveal"><span class="feat__n">03</span><div><h3>Доступное обучение</h3><p>Электронное обучение и дистанционные технологии там, где это нужно студенту.</p></div></li>
+      </ol>
+    </div>
+    <figure class="director reveal">
+      <div class="director__ph" aria-hidden="true"><span>ЕГ</span></div>
+      <blockquote>
+        <p>«Наша задача — создать все условия для качественного профессионального образования и дать студентам в руки реальные инструменты для активной, полноценной, достойной жизни».</p>
+      </blockquote>
+      <figcaption><b>Елена Викторовна Гарбузова</b><span>Директор ФКПОУ «НТТИ» Минтруда России</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ PROGRAMS ============ -->
+<section class="sec sec--alt" id="programs">
+  <div class="container">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow reveal">Куда поступать</p>
+        <h2 class="reveal">Специальности</h2>
+      </div>
+      <div class="chips" id="programFilters" role="group" aria-label="Фильтр специальностей">
+        <button type="button" class="chip is-on" data-f="all" aria-pressed="true">Все</button>
+        <button type="button" class="chip" data-f="it" aria-pressed="false">IT</button>
+        <button type="button" class="chip" data-f="design" aria-pressed="false">Дизайн и производство</button>
+      </div>
+    </div>
+    <div class="cards" id="programGrid"></div>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="sec" id="quiz-sec">
+  <div class="container quizwrap">
+    <div class="quizwrap__l">
+      <p class="eyebrow reveal">Не знаете, что выбрать?</p>
+      <h2 class="reveal" id="quiz">Подберём специальность за 4 вопроса</h2>
+      <p class="muted reveal">Короткий тест подскажет направление, которое ближе всего вашим интересам. Это не экзамен — правильных ответов нет.</p>
+    </div>
+    <div class="quizbox reveal" id="quizBox" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ============ ADMISSION ============ -->
+<section class="sec sec--alt" id="admission">
+  <div class="container">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow reveal">Абитуриенту</p>
+        <h2 class="reveal">Как поступить</h2>
+      </div>
+      <a class="btn btn-ghost reveal" href="https://www.ntti.ru/abiturientu/priem_2026">Официальная страница приёма ↗</a>
+    </div>
+    <div class="adm">
+      <ol class="steps">
+        <li class="reveal"><span>1</span><div><h3>Выберите специальность</h3><p>Изучите программы или пройдите короткий тест выше.</p></div></li>
+        <li class="reveal"><span>2</span><div><h3>Подготовьте документы</h3><p>Отмечайте готовые пункты в списке справа — прогресс сохранится в браузере.</p></div></li>
+        <li class="reveal"><span>3</span><div><h3>Позвоните или приезжайте</h3><p>Приёмная комиссия ответит на вопросы по телефону 8 (8635) 22-21-40. Можно прийти на день открытых дверей.</p></div></li>
+        <li class="reveal"><span>4</span><div><h3>Ждите приказ о зачислении</h3><p>Списки и приказы публикуются на официальном сайте техникума.</p></div></li>
+      </ol>
+      <div class="docs reveal">
+        <div class="docs__top">
+          <h3>Чек-лист документов</h3>
+          <span class="docs__count" id="docCount">0 из 0</span>
+        </div>
+        <div class="bar" aria-hidden="true"><i id="docBar"></i></div>
+        <ul id="docList" class="docs__list"></ul>
+        <p class="note">Список примерный. Точный перечень уточняйте в приёмной комиссии.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFE ============ -->
+<section class="sec" id="life">
+  <div class="container">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow reveal">Не только учёба</p>
+        <h2 class="reveal">Жизнь НТТИ</h2>
+      </div>
+    </div>
+    <div class="life reveal">
+      <div class="tabs" id="lifeTabs" role="tablist" aria-label="Направления внеучебной жизни"></div>
+      <div class="life__panel" id="lifePanel" role="tabpanel" tabindex="0"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWS ============ -->
+<section class="sec sec--alt" id="news">
+  <div class="container">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow reveal">Что происходит</p>
+        <h2 class="reveal">Новости</h2>
+      </div>
+      <a class="btn btn-ghost reveal" href="https://www.ntti.ru/news">Весь архив ↗</a>
+    </div>
+    <div class="newsbar">
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="sr">Поиск по новостям</span>
+        <input id="newsSearch" type="search" placeholder="Поиск по новостям" autocomplete="off">
+      </label>
+      <div class="chips" id="newsFilters" role="group" aria-label="Категории новостей"></div>
+    </div>
+    <div class="news" id="newsGrid"></div>
+    <p class="empty" id="newsEmpty" hidden>Ничего не нашлось. Попробуйте другой запрос.</p>
+    <div class="center"><button type="button" class="btn btn-ghost" id="newsMore">Показать ещё</button></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="sec" id="gallery">
+  <div class="container">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow reveal">Заглянуть внутрь</p>
+        <h2 class="reveal">Галерея</h2>
+      </div>
+      <a class="btn btn-ghost reveal" href="https://www.ntti.ru/tour.html">Виртуальный тур ↗</a>
+    </div>
+    <div class="gallery" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section class="sec sec--alt" id="video">
+  <div class="container">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow reveal">Смотреть</p>
+        <h2 class="reveal">Видео</h2>
+      </div>
+      <a class="btn btn-ghost reveal" href="https://www.ntti.ru/video">Весь видеоархив ↗</a>
+    </div>
+
+    <div class="players">
+      <figure class="pl reveal">
+        <div class="player" style="--h:160" data-src="https://rutube.ru/play/embed/e900706700e4697580a145394704703e/?p=2IdWEMHn-9jgtU32wIQYZw" data-title="Фильм об НТТИ">
+          <img class="player__bg ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-18.png" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">
+          <button type="button" class="player__btn" aria-label="Смотреть видео: Фильм об НТТИ"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button>
+        </div>
+        <figcaption><b>Фильм об НТТИ</b><a href="https://rutube.ru/video/private/e900706700e4697580a145394704703e/?p=2IdWEMHn-9jgtU32wIQYZw">Открыть на Rutube ↗</a></figcaption>
+      </figure>
+      <figure class="pl reveal">
+        <div class="player" style="--h:290" data-src="https://rutube.ru/play/embed/0f6698aadc4b5972a138fce3e0a0e2fb" data-title="День учителя! (запись)">
+          <button type="button" class="player__btn" aria-label="Смотреть видео: День учителя"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></button>
+        </div>
+        <figcaption><b>День учителя! (запись)</b><a href="https://rutube.ru/video/0f6698aadc4b5972a138fce3e0a0e2fb/">Открыть на Rutube ↗</a></figcaption>
+      </figure>
+    </div>
+
+    <h3 class="subhead reveal">Из архива</h3>
+    <div class="vgrid">
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=19" style="--h:200">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-19.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>7 апреля 2021</small><b>Социальный ролик НТТИ (автор И. Харламов)</b>
+        </a>
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=18" style="--h:160">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-18.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>19 марта 2021</small><b>Фильм об НТТИ</b>
+        </a>
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=17" style="--h:20">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-17.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>3 июля 2019</small><b>Барьеров.NET</b>
+        </a>
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=16" style="--h:290">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-16.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>27 декабря 2018</small><b>Фестиваль мастер-классов «Ассорти»</b>
+        </a>
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=15" style="--h:330">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-15.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>12 октября 2018</small><b>Люди с повышенными потребностями</b>
+        </a>
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=14" style="--h:45">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-14.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>24 марта 2017</small><b>Маленькая страна (2015 г.)</b>
+        </a>
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=13" style="--h:180">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-13.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>23 марта 2017</small><b>Экскурсия по НТТИ. Март 2017</b>
+        </a>
+        <a class="vcard reveal" href="https://www.ntti.ru/video/videoitem?n=11" style="--h:250">
+          <span class="vcard__v"><img class="ph" src="https://www.ntti.ru/dl_images/udb_photos/videos-preview-11.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"><span class="vid__p" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></span>
+          <small>10 декабря 2014</small><b>НТТИ сейчас</b>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND ============ -->
+<section class="sec" id="brand">
+  <div class="container">
+    <div class="sec__head">
+      <div>
+        <p class="eyebrow reveal">Дизайн-концепт</p>
+        <h2 class="reveal">Новый логотип</h2>
+      </div>
+    </div>
+    <div class="brand">
+      <div class="brand__hero reveal">
+        <svg class="brand__mark" viewBox="0 0 48 48" role="img" aria-label="Новый логотип НТТИ"><use href="#logo-mark"/></svg>
+        <div class="brand__word">НТТИ</div>
+        <p class="muted">Новочеркасский техникум-интернат</p>
+      </div>
+
+      <div class="brand__txt reveal">
+        <h3>Идея знака</h3>
+        <ul>
+          <li><b>Две опоры</b> — знания и поддержка. Вместе они складываются в букву «Н».</li>
+          <li><b>Диагональ вместо перекладины</b> — пандус: доступная среда и движение вверх, к профессии.</li>
+          <li><b>Тёплая точка</b> — человек на своём пути и солнце над ним.</li>
+          <li><b>Цвета:</b> зелёный перекликается с фирменной зелёной линией оригинального сайта, жёлтый добавляет тепла.</li>
+        </ul>
+      </div>
+
+      <div class="brand__var reveal">
+        <h3>Варианты</h3>
+        <div class="samples">
+          <figure class="sample sample--light"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#logo-mark"/></svg><figcaption>Светлый</figcaption></figure>
+          <figure class="sample sample--dark"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#logo-mark"/></svg><figcaption>Тёмный</figcaption></figure>
+          <figure class="sample sample--color"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#logo-mark"/></svg><figcaption>На цвете</figcaption></figure>
+          <figure class="sample sample--contrast"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#logo-mark"/></svg><figcaption>Контрастный</figcaption></figure>
+        </div>
+        <ul class="pal" aria-label="Палитра">
+          <li><i style="background:#0d8a6a"></i><b>Изумруд</b><small>#0d8a6a</small></li>
+          <li><i style="background:#ffc857"></i><b>Солнце</b><small>#ffc857</small></li>
+          <li><i style="background:#ff6a3d"></i><b>Коралл</b><small>#ff6a3d</small></li>
+          <li><i style="background:#121a2f"></i><b>Чернила</b><small>#121a2f</small></li>
+        </ul>
+        <p class="note">Шрифты: Unbounded — заголовки и логотип, Manrope — основной текст.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="sec" id="contacts">
+  <div class="container contacts">
+    <div class="contacts__l">
+      <p class="eyebrow reveal">Связаться</p>
+      <h2 class="reveal">Контакты</h2>
+      <p class="muted reveal">Звоните — расскажем про поступление, условия обучения и проживания.</p>
+      <a class="bigphone reveal" href="tel:+78635222140">8 (8635) 22-21-40</a>
+      <ul class="socials reveal" aria-label="Мы в социальных сетях">
+        <li><a href="http://vk.com/club14109214">ВКонтакте</a></li>
+        <li><a href="https://ok.ru/group/70000001435891">Одноклассники</a></li>
+        <li><a href="https://web.max.ru/-69657126371551">Max</a></li>
+        <li><a href="https://rutube.ru/channel/26013451/">Rutube</a></li>
+      </ul>
+      <ul class="links reveal">
+        <li><a href="https://www.ntti.ru/contacts/karta">Как к нам доехать ↗</a></li>
+        <li><a href="https://www.ntti.ru/contacts/gbook">Отзыв или обращение ↗</a></li>
+        <li><a href="https://www.ntti.ru/contacts/anketa">Анкета удовлетворённости ↗</a></li>
+      </ul>
+    </div>
+
+    <form class="form reveal" id="contactForm" novalidate>
+      <h3>Заказать обратный звонок</h3>
+      <div class="field">
+        <label for="fName">Ваше имя</label>
+        <input id="fName" name="name" type="text" autocomplete="name" required>
+        <small class="err" id="eName"></small>
+      </div>
+      <div class="field">
+        <label for="fPhone">Телефон</label>
+        <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required>
+        <small class="err" id="ePhone"></small>
+      </div>
+      <div class="field">
+        <label for="fTopic">Тема</label>
+        <select id="fTopic" name="topic">
+          <option>Поступление</option>
+          <option>Специальности</option>
+          <option>Общежитие и проживание</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <label class="check">
+        <input id="fOk" type="checkbox" required>
+        <span>Согласен на обработку персональных данных</span>
+      </label>
+      <small class="err" id="eOk"></small>
+      <button class="btn btn-primary btn-lg" type="submit">Жду звонка</button>
+      <p class="form__msg" id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="container ftr__in">
+    <div class="ftr__brand">
+      <a class="logo" href="#hero" aria-label="НТТИ — наверх">
+        <span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 48 48" width="46" height="46"><use href="#logo-mark"/></svg></span>
+        <span class="logo__t"><b>НТТИ</b><small>Новочеркасский техникум-интернат</small></span>
+      </a>
+      <p>Среднее профессиональное образование для инвалидов и лиц с ОВЗ.</p>
+    </div>
+    <nav class="ftr__nav" aria-label="Навигация в подвале">
+      <a href="https://www.ntti.ru/sveden">Сведения об образовательной организации</a>
+      <a href="https://www.ntti.ru/abiturientu">Абитуриенту</a>
+      <a href="https://www.ntti.ru/studentu">Студенту</a>
+      <a href="https://www.ntti.ru/contacts">Контакты</a>
+      <a href="https://www.ntti.ru/raznoe">О нас</a>
+      <a href="https://www.ntti.ru/protivodeystvie-korruptsii">Противодействие коррупции</a>
+      <a href="https://www.ntti.ru/noko">Независимая оценка качества</a>
+    </nav>
+  </div>
+  <div class="container ftr__note">
+    <p><b>Концепт-проект.</b> Учебный редизайн для портфолио, не является официальным сайтом ФКПОУ «НТТИ» Минтруда России. Актуальная информация — на <a href="https://www.ntti.ru/">ntti.ru</a>. Тексты и названия взяты с оригинального сайта, дизайн и код — авторские.</p>
+    <p>© <span id="year">2026</span> Портфолио-проект</p>
+  </div>
+</footer>
+
+<button type="button" class="totop" id="toTop" aria-label="Наверх" hidden>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- ============ DIALOGS ============ -->
+<dialog class="dlg" id="progDlg" aria-labelledby="progTitle">
+  <button type="button" class="dlg__x" data-close aria-label="Закрыть">×</button>
+  <div class="dlg__in" id="progBody"></div>
+</dialog>
+
+<dialog class="dlg dlg--lb" id="lightbox" aria-label="Фотогалерея">
+  <button type="button" class="dlg__x" data-close aria-label="Закрыть">×</button>
+  <figure class="lb">
+    <div class="lb__v" id="lbFig"></div>
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button type="button" class="lb__n lb__n--prev" id="lbPrev" aria-label="Предыдущее фото">‹</button>
+  <button type="button" class="lb__n lb__n--next" id="lbNext" aria-label="Следующее фото">›</button>
+</dialog>
+
+<dialog class="dlg dlg--s" id="searchDlg" aria-label="Поиск по сайту">
+  <div class="sbox">
+    <input id="sInput" type="search" placeholder="Поиск: специальности, новости, разделы…" autocomplete="off" aria-label="Поиск по сайту">
+    <ul id="sList" role="listbox" aria-label="Результаты"></ul>
+    <p class="dlg__hint">↑ ↓ — выбор · Enter — открыть · Esc — закрыть</p>
+  </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
